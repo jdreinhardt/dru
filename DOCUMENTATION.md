@@ -21,6 +21,8 @@ To start you will need to install <code>dru_scaffold.sql</code> file into MySQL 
 In the webroot folder place the entire <code>diva</code> folder. Update the SQL login credentials to match the instance in <code>/diva/connection/sql_conn.php</code>. Ensure that the entire <code>diva</code> directory is owned by the web server user. Create a <code>logs</code> folder inside of the <code>diva</code> folder and <code>chmod 777 logs/</code> to ensure mysql has rights to write logs to the folder. DRU should now be ready to use. Navigate to <code>http://<SYSTEM_URL>/diva</code> and you should be presented with a login screen. The default admin username and password can be found in the file <code>/diva/admin/adminUser.php</code> These credentials are granted full access, but can be updated to whatever you decide or disabled entirely from the administration page if desired.
 
 In order to maintain an active session with the DIVA system it is recommended to add a cron job to the server hosting the application to automatically renew the API session key. The default API expiration is ~15 minutes after last use, so the cron should be in 15 minute increments for best results. <code>*/15 * * * * curl http://\<dru server\>/diva/admin/getSessionCode.php</code> 
+   
+For restores to function correctly a Source/Destination named <code>dru_restores</code> must be configured on the DIVA server. The path for the Source/Destination can be any path. DRU will overwrite the path on initiating the restore.
 
 ### Configuration
 After installation and logging in the user settings should be configured. Select <code>Admin</code> from the navigation bar. On the left side a number of sections should be visible. 
